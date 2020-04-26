@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Alien VS Predator</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Geostar+Fill|Orbitron&display=swap" rel="stylesheet">
+  <script src="../js/jquery.js"></script>
+</head>
+
+<body>
+  <h1>\ .. \ .. -- \\\ Alien vs Predator /// -- .. / .. /</h1>
+
+  <div class="contenu">
+
+    <div id="joueur1" class="joueurClass">
+      <span id="nomPlayer1"></span> : Nom 
+      <br>
+    <span id="santePlayer1"></span> : Santé
+      <br>
+    <span id="armePlayer1"></span> : Arme
+      <br>
+    <!-- <span id="positionPlayer1"></span> : Position
+      <br> -->
+    </div>
+    <div id="container"></div>
+    <br><br>
+    <div id="joueur2" class="joueurClass">
+      <span>Nom : <span id="nomPlayer2"></span></span>
+      <br>
+      <span>Santé : <span id="santePlayer2"></span> </span>
+      <br>
+      <span>Arme : <span id="armePlayer2"></span></span>
+      <br>
+      <!-- <span>Position : <span id="positionPlayer2"></span></span>
+      <br> -->
+    </div>
+    <div id="overlay3">
+      <div class="popup_block">
+          <a class="close" href="#noWhere">
+            <img src="../img/close_button.png" height="42" width="42" alt="Fermer" title="Fermer la fenêtre" 
+            class="btn_close"></a>
+          <p>Le joueur <span id="joueur1Ou2"></span> commence !</p>
+      </div>
+  </div>
+  <div id="overlay2">
+    <div class="popup_block">
+        <a  class="close" href="#noWhere">
+          <img src="../img/close_button.png" height="42" width="42" alt="Fermer" title="Fermer la fenêtre" 
+          class="btn_close"></a>
+        <p>Au tour de <span id="player1Or2"></span> de jouer</p>
+    </div>
+</div>
+<div id="overlay1">
+  <div class="popup_block">
+    <span id="alienOuPredator"></span> <p>Voulez-vous attaquer ou défendre?</p>
+      <a class="defendre" href="#noWhere">
+        <img alt="Defendre" title="defendre" 
+      class="defendre"></a>
+      <a class="attaquer" href="#noWhere">
+        <img alt="Attaquer" title="attaquer" 
+      class="attaquer"></a>
+  </div>
+</div>
+<div id="overlayWin">
+  <div class="popup_block">
+    <p>Le joueur <span id="vainqueur"></span> a gagné !</p>
+      <a class="recommencer" href="#noWhere">
+        <img alt="Recommencer" title="recommencer" 
+      class="recommencer"></a>
+      <a class="visiter" href="http://mltplx.fr/">
+        <img alt="Visiter le site de MLTPLX" title="Visiter" 
+      class="visiter"></a>
+      
+  </div>
+</div>
+  </div>
+  <script src="../js/board.js"></script>
+  <script src="../js/armes.js"></script>
+  <script src="../js/perso.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+
+</html>

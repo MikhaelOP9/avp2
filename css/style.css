@@ -1,0 +1,187 @@
+#container {
+	position: relative;
+	top: 20px;
+	font-size: 0;
+	margin:auto;
+	max-height:550px;
+  max-width:550px;
+  min-height:550px;
+	min-width:550px;
+	padding: 10px;
+
+}
+.board {
+	margin:0;
+	padding:0;
+	outline:1px solid black;
+    display:inline-block;
+    z-index: 1;
+    font-size: 12px;
+}
+html{
+  background-color:transparent;
+  color: white;
+}
+#overlay3{
+  display: none;
+  position: fixed;
+  top:0; right:0; bottom:0; left:0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+#overlay3:target{
+  display: block;
+}
+#overlay2{
+  display: none;
+  position: fixed;
+  top:0; right:0; bottom:0; left:0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+#overlay1:target{
+  display: block;
+}
+#overlay1{
+  display: none;
+  position: fixed;
+  top:0; right:0; bottom:0; left:0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+#overlay1:target{
+  display: block;
+}
+#overlayWin:target{
+  display: block;
+}
+#overlayWin{
+  display: none;
+  position: fixed;
+  top:0; right:0; bottom:0; left:0;
+  background-color: rgb(122, 0, 170);
+  z-index: 1000;
+}
+#overlayWin:target{
+  display: block;
+}
+.popup_block{
+  background: black;
+  padding: 20px;
+  border: 20px solid #ddd;
+  position: relative;
+  margin: 10% auto;
+  width: 40%;
+  box-shadow: 0px 0px 20px #000;
+  border-radius: 10px;
+}
+.btn_close {
+  float: right;
+  margin: -70px -37px 0 0;
+  color: white;
+}
+.attaquer {
+  /* float: right; */
+  margin: -70px -37px 0 0;
+  color: white;
+}
+.defendre {
+  /* float: right; */
+  margin: 0px 0px 0 0;
+  color: white;
+}
+h1 {
+     color : white;
+    text-align: center;
+    font-size: 25px;
+    /* margin-top: 0px; */
+    right: 50%;
+    text-transform: uppercase;
+    margin-bottom: 0px;   
+  }
+body{
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      /* overflow: hidden; */
+      background-image:url(../img/fond4.jpg);
+  }
+p {
+    color: white;
+    margin:0px;
+  }
+.contenu{
+  background-color: transparent;
+  display: flex;  
+  flex: auto;
+  color : white;
+  max-height: 550px;  
+
+}
+.case {
+  box-sizing: border-box;
+  width: 54px;
+  height: 54px;
+  border: 1px white solid;
+  float: left;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 10px;
+
+}
+#joueur1{
+    text-align: right;
+    margin-top: 400px;
+    margin-left: 200px;
+    z-index: 20;
+    padding : 10px;
+    max-height: 90px;
+}
+#joueur2{
+    text-align: left;
+    margin-top: 400px;
+    margin-right: 200px;
+    z-index: 20;
+    padding : 10px;
+    max-height: 90px;
+}
+.alien {
+  background-image: url('../img/alien.png');
+  z-index: 20;
+}
+.predator {
+  background-image: url('../img/predator.png');
+  z-index: 20;
+}
+.survol {
+  background-color: grey;
+}
+.wall {
+  width: 54px !important;
+  height: 54px !important;
+  border: none !important;
+  background-image: url('../img/wall.png'); 
+  z-index:10
+}
+.gun{
+  background-image: url('../img/Gun.png');
+  z-index: 20;
+}
+.lazer {
+  background-image: url('../img/Lazer.png');
+  z-index: 20;
+}
+#images{
+    z-index: 20;
+  }
+.chemical {
+  background-image: url('../img/Chemical.png');
+  z-index: 20;
+}
+.nuclear {
+  background-image: url('../img/Nuclear.png');
+  z-index: 20;
+}
+.map{
+  border: 2px solid; 
+  border-collapse: collapse
+}
