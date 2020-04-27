@@ -1,12 +1,12 @@
 //_________________________________________________declarations des objets Armes
-const gun = new Armes("Gun", 10, 0, 0, "../img/Gun.png", true);
-const lazer = new Armes("Lazer", 20, 0, 0, "../img/Lazer.png", false);
-const chemical = new Armes("Chemical", 40, 0, 0, "../img/Chemical.png", false);
-const nuclear = new Armes("Nuclear", 50, 0, 0, "../img/Nuclear.png", false);
+const gun = new Armes("gun", 10, 0, 0, "../img/Gun.png", true);
+const lazer = new Armes("lazer", 20, 0, 0, "../img/Lazer.png", false);
+const chemical = new Armes("chemical", 40, 0, 0, "../img/Chemical.png", false);
+const nuclear = new Armes("nuclear", 50, 0, 0, "../img/Nuclear.png", false);
 
 //_________________________________________________ déclarations des Perso
-let alien = new Perso("alien", 100, 10, "gun", 0, "../img/alien.png", false, 0);
-let predator = new Perso("predator", 100, 10, "gun", 0, "../img/predator.png", false, 0);
+let alien = new Perso("alien", 100, 10, gun, 0, "../img/alien.png", false, 0);
+let predator = new Perso("predator", 100, 10, gun, 0, "../img/predator.png", false, 0);
 
 //_________________________________________________déclaration du compteur de tour
 let compteurDeTour = 0;
@@ -100,6 +100,7 @@ function mouvementPerso() {
         const movePossible = map.availablePosition(newY, newX);
         if (movePossible) {
             let weapon = map.availableWeapon(newY, newX)
+            console.log(weapon);
             if (weapon != null) setWeapon(weapon, newY, newX);
             map.movePlayer(actif, newY, newX, oldY, oldX);
             actif.armeLache = null;
@@ -124,13 +125,13 @@ function mouvementPerso() {
                         //     alien.defending = false;
                         // }
                         document.getElementById("alienOuPredator").textContent = predator.nom;
-                        if (alien.arme == "gun") {
+                        if (alien.arme == gun) {
                             alien.degat = gun.degatArme;
-                        } if (alien.arme == "lazer") {
-                            alien.dega = lazer.degatArme;
-                        } if (alien.arme == "chemical") {
+                        } if (alien.arme == lazer) {
+                            alien.degat = lazer.degatArme;
+                        } if (alien.arme == chemical) {
                             alien.degat = chemical.degatArme;
-                        } if (alien.arme == "nuclear") {
+                        } if (alien.arme == nuclear) {
                             alien.degat = nuclear.degatArme;
                         }
                         // Défense predator
@@ -151,13 +152,13 @@ function mouvementPerso() {
                         //__________________________________________________ predator attaque & defense
                         console.log(predator.nom + " attaque");
                         document.getElementById("alienOuPredator").textContent = alien.nom;
-                        if (predator.arme == "gun") {
+                        if (predator.arme == gun) {
                             predator.degat = gun.degatArme
-                        } if (predator.arme == "lazer") {
+                        } if (predator.arme == lazer) {
                             predator.degat = lazer.degatArme;
-                        } if (predator.arme == "chemical") {
+                        } if (predator.arme == chemical) {
                             predator.degat = chemical.degatArme
-                        } if (predator.arme == "nuclear") {
+                        } if (predator.arme == nuclear) {
                             predator.degat = nuclear.degatArme;
                         } 
                         if (alien.defending){
@@ -198,7 +199,9 @@ function mouvementPerso() {
 //_________________________________________________Fonction gérrant les changements de joueurs pdt la pahse des deplacements
 function changePlayer() {
     if (actif == alien) {
+       console.log(alien.currentPlayer(alien));
         actif = predator;
+        
         $("#joueur2").css({
             'border': 'solid',
             'borderRadius': '10px',
@@ -208,8 +211,11 @@ function changePlayer() {
         $("#joueur1").css({
             'border': 'none'
         });
+
     } else if (actif == predator) {
+        console.log(predator.currentPlayer(predator));
         actif = alien;
+        
         $("#joueur1").css({
             'border': 'solid',
             'borderRadius': '10px',
@@ -221,14 +227,16 @@ function changePlayer() {
         });
     }
     compteurDeTour = 0;
+    // actif = alien;
     let overlay2Elt = document.getElementById("overlay2");
-    document.getElementById("player1Or2").textContent = actif.nom;
-    overlay2Elt.style.display = "block";
-    let boutonClose = document.getElementsByClassName("btn_close")[1];
-    boutonClose.onclick = function () {
-        overlay2Elt.style.display = "none";
-    }
+document.getElementById("player1Or2").textContent = actif.nom;
+overlay2Elt.style.display = "block";
+let boutonClose = document.getElementsByClassName("btn_close")[1];
+boutonClose.onclick = function () {
+    overlay2Elt.style.display = "none";
 }
+    }
+
 //_________________________________________________Fonction gérant les changements d'armes
 function setWeapon(weapon) {
     actif.armeLache = actif.arme;

@@ -1,4 +1,5 @@
 
+
 class Board {
   constructor() {
     this.map;
@@ -153,7 +154,7 @@ class Board {
   }
   movePlayer(player, newY, newX, oldY, oldX) {
     if (player.armeLache != null){
-      this.map[oldY][oldX] = player.armeLache;
+      this.map[oldY][oldX] = player.armeLache.nom;
 
     } else {
       this.map[oldY][oldX] = null;
@@ -168,13 +169,13 @@ class Board {
   availableWeapon(y, x) {
     let newWeapon = null;
     if (this.map[y][x] == "gun") {
-      newWeapon = "gun"
+      newWeapon = gun;
     } if (this.map[y][x] == "lazer") {
-      newWeapon = "lazer"
+      newWeapon = lazer;
     } if (this.map[y][x] == "chemical") {
-      newWeapon = "chemical"
+      newWeapon = chemical;
     } if (this.map[y][x] == "nuclear") {
-      newWeapon = "nuclear"
+      newWeapon = nuclear;
     } 
     return newWeapon;
   }
