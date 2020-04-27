@@ -97,14 +97,14 @@ function mouvementPerso() {
         else if (evt.key === 'ArrowLeft') newX--;
 
         //_________________________________________________ mise à jour de la position du pion.
-        const movePossible = map.availablePosition(newY, newX);
+        let movePossible = map.availablePosition(newY, newX);
         if (movePossible) {
             let weapon = map.availableWeapon(newY, newX)
             console.log(weapon);
             if (weapon != null) setWeapon(weapon, newY, newX);
             map.movePlayer(actif, newY, newX, oldY, oldX);
-            actif.armeLache = null;
-            const attackPossible = map.nextToPlayer(newY, newX)
+            
+            let attackPossible = map.nextToPlayer(newY, newX)
 
             //_________________________________________________les joueurs sont sur des cases adjacentes, c'est la bagarre!
             if (attackPossible) {
@@ -199,32 +199,12 @@ function mouvementPerso() {
 //_________________________________________________Fonction gérrant les changements de joueurs pdt la pahse des deplacements
 function changePlayer() {
     if (actif == alien) {
-       console.log(alien.currentPlayer(alien));
         actif = predator;
-        
-        $("#joueur2").css({
-            'border': 'solid',
-            'borderRadius': '10px',
-            'borderColor': 'grey',
-            'borderWidth': "5px"
-        });
-        $("#joueur1").css({
-            'border': 'none'
-        });
+        actif.currentPlayer();
 
     } else if (actif == predator) {
-        console.log(predator.currentPlayer(predator));
         actif = alien;
-        
-        $("#joueur1").css({
-            'border': 'solid',
-            'borderRadius': '10px',
-            'borderColor': 'grey',
-            'borderWidth': "5px"
-        });
-        $("#joueur2").css({
-            'border': 'none'
-        });
+        actif.currentPlayer();
     }
     compteurDeTour = 0;
     // actif = alien;

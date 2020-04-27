@@ -155,7 +155,7 @@ class Board {
   movePlayer(player, newY, newX, oldY, oldX) {
     if (player.armeLache != null){
       this.map[oldY][oldX] = player.armeLache.nom;
-
+      player.armeLache = null;
     } else {
       this.map[oldY][oldX] = null;
     }
