@@ -30,47 +30,12 @@ function rndNbInRange(min, max) {
 function quiCommence() {
     if (this.rndNbInRange(0, 2) == 0) {
         actif = alien;
+        alien.initQuiCommence();
         console.log(alien.nom + " commence");
-
-        //_________________________________________________Pop-up indiquant que Alien commence
-        let overlay3Elt = document.getElementById("overlay3");
-        overlay3Elt.style.display = "block";
-        document.getElementById("joueur1Ou2").textContent = alien.nom;
-        let boutonClose = document.getElementsByClassName("btn_close")[0];
-        boutonClose.onclick = function () {
-            overlay3Elt.style.display = "none";
-
-            //_________________________________________________affichage encadré indiquant que alien est actif
-            $("#joueur1").css({
-                'border': 'solid',
-                'borderRadius': '10px',
-                'borderColor': 'white',
-                'borderWidth': "5px"
-            });
-        }
     } else {
         actif = predator;
+        predator.initQuiCommence();
         console.log(predator.nom + " commence");
-        //_________________________________________________pop-up indiquant que predator commence
-        let overlay3Elt = document.getElementById("overlay3");
-        overlay3Elt.style.display = "block";
-        document.getElementById("joueur1Ou2").textContent = predator.nom;
-        let boutonClose = document.getElementsByClassName("btn_close")[0];
-        boutonClose.onclick = function () {
-            overlay3Elt.style.display = "none";
-
-            //_________________________________________________affichage encadré indiquant que predator est actif
-            $("#joueur2").css({
-                'border': 'solid',
-                'borderRadius': '10px',
-                'borderColor': 'white',
-                'borderWidth': "5px"
-            });
-            function infosClavier(e) {
-                console.log("Evènement clavier : " + e.type + ", touche : " + e.keyCode);
-            }
-            document.addEventListener("keydown", infosClavier);
-        }
     }
 //_________________________________________________Affichage dans la page des infos des perso
     predator.affichePerso();
@@ -172,8 +137,8 @@ function mouvementPerso() {
                         changeFighter();
 
                     };
-                    console.log("sante alien : " + alien.sante + ", arme alien : " + alien.arme +
-                        " sante predator : " + predator.sante + ", arme predator " + predator.arme);
+                    console.log("sante alien : " + alien.sante + ", arme alien : " + alien.arme.nom +
+                        " sante predator : " + predator.sante + ", arme predator " + predator.arme.nom);
                 }
                 //__________________________________________________Defense
                 boutonDefendre.onclick = function () {
@@ -208,13 +173,7 @@ function changePlayer() {
     }
     compteurDeTour = 0;
     // actif = alien;
-    let overlay2Elt = document.getElementById("overlay2");
-document.getElementById("player1Or2").textContent = actif.nom;
-overlay2Elt.style.display = "block";
-let boutonClose = document.getElementsByClassName("btn_close")[1];
-boutonClose.onclick = function () {
-    overlay2Elt.style.display = "none";
-}
+    
     }
 
 //_________________________________________________Fonction gérant les changements d'armes
@@ -243,26 +202,10 @@ function changeFighter() {
         console.log("changement de joueur");
         if (actif == alien) {
             document.getElementById("player1Or2").textContent = predator.nom;
-            $("#joueur2").css({
-                'border': 'solid',
-                'borderRadius': '10px',
-                'borderColor': 'grey',
-                'borderWidth': "5px"
-            });
-            $("#joueur1").css({
-                'border': 'none'
-            });
+           alien.showCurrentFighter();
         } else if (actif == predator) {
             document.getElementById("player1Or2").textContent = alien.nom;
-            $("#joueur1").css({
-                'border': 'solid',
-                'borderRadius': '10px',
-                'borderColor': 'grey',
-                'borderWidth': "5px"
-            });
-            $("#joueur2").css({
-                'border': 'none'
-            });
+           predator.showCurrentFighter();
         }
         let overlay2Elt = document.getElementById("overlay2");
         overlay2Elt.style.display = "block";

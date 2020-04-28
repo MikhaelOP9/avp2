@@ -1,5 +1,3 @@
-
-
 class Board {
   constructor() {
     this.map;
@@ -9,7 +7,7 @@ class Board {
     this.playerCount = 2;
     this.alienCount = 1;
     this.predatorCount = 1;
-    this.arme;
+    // this.arme;
     this.createMap();
     this.createWalls();
     this.createLazer();
@@ -56,42 +54,42 @@ class Board {
   createGun() {
     for (let i = 0; i < 1; i++) {
       let { x, y } = this.getRandomAvailableCoords();
-      this.map[y][x] = 'gun';
+      this.map[y][x] = gun.nom;
     }
   }
   //__________________________________________________disposition sur la carte des lazers
   createLazer() {
     for (let i = 0; i < 1; i++) {
       let { x, y } = this.getRandomAvailableCoords();
-      this.map[y][x] = 'lazer';
+      this.map[y][x] = lazer.nom;
     }
   }
 //__________________________________________________disposition sur la carte des armes chimique
   createChemical() {
     for (let i = 0; i < 1; i++) {
       let { x, y } = this.getRandomAvailableCoords();
-      this.map[y][x] = 'chemical';
+      this.map[y][x] = chemical.nom;
     }
   }
   //__________________________________________________disposition sur la carte de l'arme nucléaire
   createNuclear() {
     for (let i = 0; i < 1; i++) {
       let { x, y } = this.getRandomAvailableCoords();
-      this.map[y][x] = 'nuclear';
+      this.map[y][x] = nuclear.nom;
     }
   }
   //__________________________________________________disposition sur la carte du perso predator
   createPredator() {
     for (let i = 0; i < this.predatorCount; i++) {
       let { x, y } = this.getRandomAvailableCoords();
-      this.map[y][x] = 'predator';
+      this.map[y][x] = predator.nom;
     }
   }
   //__________________________________________________disposition sur la carte du perso alien
   createAlien() {
     for (let i = 0; i < this.alienCount; i++) {
       let { x, y } = this.getRandomAvailableCoords();
-      this.map[y][x] = 'alien';
+      this.map[y][x] = alien.nom;
     }
   }
   //__________________________________________________affichage de la carte en jquery
@@ -110,18 +108,18 @@ class Board {
         let type = "";
         if (this.map[y][x] == "wall")
           type = "wall";
-        if (this.map[y][x] == "alien")
-          type = "alien";
-        if (this.map[y][x] == "predator")
-          type = "predator";
-        if (this.map[y][x] == "gun")
-          type = "gun";
-        if (this.map[y][x] == "chemical")
-          type = "chemical"
-        if (this.map[y][x] == "nuclear")
-          type = "nuclear";
-        if (this.map[y][x] == "lazer")
-          type = "lazer";
+        if (this.map[y][x] == alien.nom)
+          type = alien.nom;
+        if (this.map[y][x] == predator.nom)
+          type = predator.nom;
+        if (this.map[y][x] == gun.nom)
+          type = gun.nom;
+        if (this.map[y][x] == chemical.nom)
+          type = chemical.nom
+        if (this.map[y][x] == nuclear.nom)
+          type = nuclear.nom;
+        if (this.map[y][x] == lazer.nom)
+          type = lazer.nom;
         $('table.mainTable>tbody.gameContainer>tr.gameRow[data-location-y="' + y + '"]').append(`
             <td data-location-x="${x}" data-location-y="${y}" class="case ${type}"></td> 
           `);
@@ -145,8 +143,8 @@ class Board {
       x >= 0 &&
       x < this.mapSize &&
       this.map[y][x] != "wall" &&
-      this.map[y][x] != "alien" &&
-      this.map[y][x] != "predator"
+      this.map[y][x] != alien.nom &&
+      this.map[y][x] != predator.nom
       ) {
       return true;
     }
@@ -168,13 +166,13 @@ class Board {
    //__________________________________________________armes disponible sur la carte
   availableWeapon(y, x) {
     let newWeapon = null;
-    if (this.map[y][x] == "gun") {
+    if (this.map[y][x] == gun.nom) {
       newWeapon = gun;
-    } if (this.map[y][x] == "lazer") {
+    } if (this.map[y][x] == lazer.nom) {
       newWeapon = lazer;
-    } if (this.map[y][x] == "chemical") {
+    } if (this.map[y][x] == chemical.nom) {
       newWeapon = chemical;
-    } if (this.map[y][x] == "nuclear") {
+    } if (this.map[y][x] == nuclear.nom) {
       newWeapon = nuclear;
     } 
     return newWeapon;
@@ -182,12 +180,12 @@ class Board {
    //__________________________________________________détection de la proximité des joueurs sur des cases adjacentes
   nextToPlayer(y, x){
     if (y-1 != -1)
-      if (this.map[y-1][x] == "alien" || this.map[y-1][x] == "predator") return true;
+      if (this.map[y-1][x] == alien.nom || this.map[y-1][x] == predator.nom) return true;
     if (y+1 < this.mapSize)
-      if (this.map[y+1][x] == "alien" || this.map[y+1][x] == "predator") return true;
+      if (this.map[y+1][x] == alien.nom || this.map[y+1][x] == predator.nom) return true;
     if (x-1 != -1)
-      if (this.map[y][x-1] == "alien" || this.map[y][x-1] == "predator") return true;
-    if (this.map[y][x+1] == "alien" || this.map[y][x+1] == "predator") return true;
+      if (this.map[y][x-1] == alien.nom || this.map[y][x-1] == predator.nom) return true;
+    if (this.map[y][x+1] == alien.nom || this.map[y][x+1] == predator.nom) return true;
     return false;
   }
 }

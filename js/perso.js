@@ -8,11 +8,9 @@ class Perso {
         this.arme = arme;
         this.position = position;
         this.imgSrc = imgSrc;
-        // this.joueur1 = joueur1;
-        // this.joueur2 = joueur2;
         this.armeLache = null;
         this.defending = false;
-        this.currentPlayer();
+        this.initQuiCommence();
     }
     //__________________________________________________description des personnages
     decrirePerso() {
@@ -40,6 +38,43 @@ class Perso {
             $("#positionPlayer2").html(`${this.position}`);
         }
     };
+    initQuiCommence(){
+        if (this.nom == "alien") {
+            let overlay3Elt = document.getElementById("overlay3");
+            overlay3Elt.style.display = "block";
+            document.getElementById("joueur1Ou2").textContent = this.nom;
+            let boutonClose = document.getElementsByClassName("btn_close")[0];
+            boutonClose.onclick = function () {
+                overlay3Elt.style.display = "none";
+                //_________________________________________________affichage encadré indiquant que alien est actif
+                $("#joueur1").css({
+                    'border': 'solid',
+                    'borderRadius': '10px',
+                    'borderColor': 'white',
+                    'borderWidth': "5px"
+                });
+            }
+        } else if (this.nom == "predator"){
+            //_________________________________________________pop-up indiquant que predator commence
+            let overlay3Elt = document.getElementById("overlay3");
+            overlay3Elt.style.display = "block";
+            document.getElementById("joueur1Ou2").textContent = this.nom;
+            let boutonClose = document.getElementsByClassName("btn_close")[0];
+            boutonClose.onclick = function () {
+                overlay3Elt.style.display = "none";
+                //_________________________________________________affichage encadré indiquant que predator est actif
+                $("#joueur2").css({
+                    'border': 'solid',
+                    'borderRadius': '10px',
+                    'borderColor': 'white',
+                    'borderWidth': "5px"
+                });
+
+            }
+        }
+
+    }
+
     currentPlayer() {
         console.log("current Player")
         console.log(this.nom);
@@ -48,7 +83,7 @@ class Perso {
             $("#joueur1").css({
                 'border': 'solid',
                 'borderRadius': '10px',
-                'borderColor': 'grey',
+                'borderColor': 'white',
                 'borderWidth': "5px"
             });
             $("#joueur2").css({
@@ -61,7 +96,7 @@ class Perso {
             $("#joueur2").css({
                 'border': 'solid',
                 'borderRadius': '10px',
-                'borderColor': 'grey',
+                'borderColor': 'white',
                 'borderWidth': "5px"
             });
             $("#joueur1").css({
@@ -76,6 +111,28 @@ class Perso {
             overlay2Elt.style.display = "none";
         }
     }
+    showCurrentFighter(){
+        if (actif == alien) {
+            $("#joueur2").css({
+                'border': 'solid',
+                'borderRadius': '10px',
+                'borderColor': 'white',
+                'borderWidth': "5px"
+            });
+            $("#joueur1").css({
+                'border': 'none'
+            });
+        } else if (actif == predator) {
+            $("#joueur1").css({
+                'border': 'solid',
+                'borderRadius': '10px',
+                'borderColor': 'white',
+                'borderWidth': "5px"
+            });
+            $("#joueur2").css({
+                'border': 'none'
+            });
+    }
 }
 
-// }
+}
