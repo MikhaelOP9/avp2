@@ -157,7 +157,6 @@ class Board {
     } else {
       this.map[oldY][oldX] = null;
     }
-    
     this.map[newY][newX] = player.nom;
     
  //__________________________________________________rafraichissement de l'affichage

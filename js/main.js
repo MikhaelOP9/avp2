@@ -74,7 +74,7 @@ function mouvementPerso() {
             //_________________________________________________les joueurs sont sur des cases adjacentes, c'est la bagarre!
             if (attackPossible) {
                 console.log("attack is possible");
-                document.getElementById("alienOuPredator").textContent = actif.name;
+                document.getElementById("alienOuPredator").textContent = actif.nom;
                 let overlay1Elt = document.getElementById("overlay1");
                 overlay1Elt.style.display = "block";
                 let boutonDefendre = document.getElementsByClassName("defendre")[1];
@@ -86,9 +86,6 @@ function mouvementPerso() {
                     //__________________________________________________ alien attaque & defense
                     if (actif == alien) {
                         console.log(alien.nom +" attaque");
-                        // if (alien.defending){
-                        //     alien.defending = false;
-                        // }
                         document.getElementById("alienOuPredator").textContent = predator.nom;
                         if (alien.arme == gun) {
                             alien.degat = gun.degatArme;
@@ -111,9 +108,6 @@ function mouvementPerso() {
                         changeFighter();
 
                     } if (actif == predator) {
-                        // if (predator.defending){
-                        //     predator.defending = false;
-                        // }
                         //__________________________________________________ predator attaque & defense
                         console.log(predator.nom + " attaque");
                         document.getElementById("alienOuPredator").textContent = alien.nom;
@@ -133,12 +127,13 @@ function mouvementPerso() {
                         if (predator.defending){
                             predator.defending = false;
                         }
-                        actif.affichePerso();
+                        alien.affichePerso();
+                        predator.affichePerso();
                         changeFighter();
 
                     };
-                    console.log("sante alien : " + alien.sante + ", arme alien : " + alien.arme.nom +
-                        " sante predator : " + predator.sante + ", arme predator " + predator.arme.nom);
+                    console.log("Sante alien : " + alien.sante + ", arme alien : " + alien.arme.nom +
+                        " Sante predator : " + predator.sante + ", arme predator " + predator.arme.nom);
                 }
                 //__________________________________________________Defense
                 boutonDefendre.onclick = function () {
@@ -147,11 +142,11 @@ function mouvementPerso() {
                     if (actif == alien) {
                         console.log("alien défend");
                         alien.defending = true;
-                    
+                        document.getElementById("alienOuPredator").textContent = predator.nom;
                      } if (actif == predator) {
                          console.log("predator défend");
                         predator.defending = true;
-
+                        document.getElementById("alienOuPredator").textContent = alien.nom;
                     };
                     changeFighter();
                 }
@@ -172,8 +167,6 @@ function changePlayer() {
         actif.currentPlayer();
     }
     compteurDeTour = 0;
-    // actif = alien;
-    
     }
 
 //_________________________________________________Fonction gérant les changements d'armes
@@ -203,9 +196,11 @@ function changeFighter() {
         if (actif == alien) {
             document.getElementById("player1Or2").textContent = predator.nom;
            alien.showCurrentFighter();
+           
         } else if (actif == predator) {
             document.getElementById("player1Or2").textContent = alien.nom;
            predator.showCurrentFighter();
+           
         }
         let overlay2Elt = document.getElementById("overlay2");
         overlay2Elt.style.display = "block";
@@ -216,6 +211,9 @@ function changeFighter() {
             let overlay1Elt = document.getElementById("overlay1");
             overlay1Elt.style.display = "block";
         }
+
     }
+    predator.affichePerso();
+    alien.affichePerso();
 }
 

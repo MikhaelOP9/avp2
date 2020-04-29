@@ -76,8 +76,6 @@ class Perso {
     }
 
     currentPlayer() {
-        console.log("current Player")
-        console.log(this.nom);
         if (this.nom == "alien") {
             console.log("currentPlayer Alien")
             $("#joueur1").css({
@@ -104,7 +102,7 @@ class Perso {
             });
         }
         let overlay2Elt = document.getElementById("overlay2");
-        document.getElementById("player1Or2").textContent = this.nom;
+        document.getElementById("player1Or2").textContent = actif.nom;
         overlay2Elt.style.display = "block";
         let boutonClose = document.getElementsByClassName("btn_close")[1];
         boutonClose.onclick = function () {
@@ -113,23 +111,25 @@ class Perso {
     }
     showCurrentFighter(){
         if (actif == alien) {
-            $("#joueur2").css({
+            console.log("currentFighter Alien")
+            $("#joueur1").css({
                 'border': 'solid',
                 'borderRadius': '10px',
                 'borderColor': 'white',
                 'borderWidth': "5px"
             });
-            $("#joueur1").css({
+            $("#joueur2").css({
                 'border': 'none'
             });
         } else if (actif == predator) {
-            $("#joueur1").css({
+            console.log("currentFighter Predator")
+            $("#joueur2").css({
                 'border': 'solid',
                 'borderRadius': '10px',
                 'borderColor': 'white',
                 'borderWidth': "5px"
             });
-            $("#joueur2").css({
+            $("#joueur1").css({
                 'border': 'none'
             });
     }
