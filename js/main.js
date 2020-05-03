@@ -9,15 +9,8 @@ let alien = new Perso("alien", 100, 10, gun, 0, "../img/alien.png", false, 0);
 let predator = new Perso("predator", 100, 10, gun, 0, "../img/predator.png", false, 0);
 
 //_________________________________________________déclaration du compteur de tour
+///a partir de la faire une classe game qui englobe le tout
 let compteurDeTour = 0;
-
-// console.log(alien.decrirePerso());
-// console.log(predator.decrirePerso());
-// console.log(gun.decrireArmes());
-// console.log(lazer.decrireArmes());
-// console.log(chemical.decrireArmes());
-// console.log(nuclear.decrireArmes());
-
 //_________________________________________________appel de la carte
 let map = new Board(10, 10);
 //_________________________________________________initialisation du status du perso
@@ -50,6 +43,7 @@ function mouvementPerso() {
     window.addEventListener('keydown', evt => {
         console.log(evt);
         let { y, x } = map.locatePlayer(actif);
+        console.log(y, x);
         let newY = y;
         let oldY = y;
         let newX = x;
@@ -63,6 +57,7 @@ function mouvementPerso() {
 
         //_________________________________________________ mise à jour de la position du pion.
         let movePossible = map.availablePosition(newY, newX);
+        console.log("movePossible", movePossible)
         if (movePossible) {
             let weapon = map.availableWeapon(newY, newX)
             console.log(weapon);
@@ -72,6 +67,7 @@ function mouvementPerso() {
             let attackPossible = map.nextToPlayer(newY, newX)
 
             //_________________________________________________les joueurs sont sur des cases adjacentes, c'est la bagarre!
+            //promesse tout englober dans une promesse de la ligne 76 à 153
             if (attackPossible) {
                 console.log("attack is possible");
                 document.getElementById("alienOuPredator").textContent = actif.nom;
