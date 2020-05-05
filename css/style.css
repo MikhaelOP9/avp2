@@ -159,6 +159,7 @@ p {
   width: 54px !important;
   height: 54px !important;
   border: none !important;
+  background-color : white;
   background-image: url('../img/wall.png'); 
   z-index:10
 }

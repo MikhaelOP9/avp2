@@ -1,7 +1,8 @@
 
 //__________________________________________________Déclaration de la classe Perso
 class Perso {
-    constructor(nom, sante, degat, arme, position, imgSrc) {
+    constructor(nom, sante, degat, arme, position, imgSrc, actif) {
+        this.actif = actif;
         this.nom = nom;
         this.sante = sante;
         this.degat = degat;
@@ -102,7 +103,7 @@ class Perso {
             });
         }
         let overlay2Elt = document.getElementById("overlay2");
-        document.getElementById("player1Or2").textContent = actif.nom;
+        document.getElementById("player1Or2").textContent = this.actif.nom;
         overlay2Elt.style.display = "block";
         let boutonClose = document.getElementsByClassName("btn_close")[1];
         boutonClose.onclick = function () {
@@ -110,7 +111,7 @@ class Perso {
         }
     }
     showCurrentFighter(){
-        if (actif == alien) {
+        if (this.actif.nom == "alien") {
             console.log("currentFighter Alien")
             $("#joueur1").css({
                 'border': 'solid',
@@ -121,7 +122,7 @@ class Perso {
             $("#joueur2").css({
                 'border': 'none'
             });
-        } else if (actif == predator) {
+        } else if (this.actif.nom == "predator") {
             console.log("currentFighter Predator")
             $("#joueur2").css({
                 'border': 'solid',
