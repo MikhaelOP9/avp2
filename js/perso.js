@@ -70,15 +70,12 @@ class Perso {
                     'borderColor': 'white',
                     'borderWidth': "5px"
                 });
-
             }
         }
-
     }
 
     currentPlayer() {
         if (this.nom == "alien") {
-            console.log("currentPlayer Alien")
             $("#joueur1").css({
                 'border': 'solid',
                 'borderRadius': '10px',
@@ -91,7 +88,6 @@ class Perso {
 
 
         } else if (this.nom == "predator") {
-            console.log("currentPlayer Predator")
             $("#joueur2").css({
                 'border': 'solid',
                 'borderRadius': '10px',
@@ -103,7 +99,7 @@ class Perso {
             });
         }
         let overlay2Elt = document.getElementById("overlay2");
-        document.getElementById("player1Or2").textContent = this.actif.nom;
+        document.getElementById("player1Or2").textContent = this.nom;
         overlay2Elt.style.display = "block";
         let boutonClose = document.getElementsByClassName("btn_close")[1];
         boutonClose.onclick = function () {

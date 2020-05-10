@@ -98,7 +98,6 @@ class Board {
     for (let i = 0; i < this.predatorCount; i++) {
       let { x, y } = this.getRandomAvailableCoords();
       this.map[y][x].player = this.predator.nom;
-      console.log(this.predator.nom);
     }
   }
   //__________________________________________________disposition sur la carte du perso alien
