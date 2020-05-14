@@ -11,8 +11,8 @@ class Armes {
      //__________________________________________________Déscripion des armes
     decrireArmes() {
         return `Cette arme se nomme ${this.nom} elle enléve ${this.degatArme} 
-        points de vie, elle est localisée à la case N°${this.positionArme
-            }  ${this.imgSrc} ${this.actif}`;
+        points de vie, elle est localisée à la case N°${this.positionArme}  
+        ${this.imgSrc} ${this.actif}`;
     }
 }
 

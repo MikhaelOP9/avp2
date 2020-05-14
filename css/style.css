@@ -8,15 +8,14 @@
   min-height:550px;
 	min-width:550px;
 	padding: 10px;
-
 }
 .board {
 	margin:0;
 	padding:0;
 	outline:1px solid black;
-    display:inline-block;
-    z-index: 1;
-    font-size: 12px;
+  display:inline-block;
+  z-index: 1;
+  font-size: 12px;
 }
 html{
   background-color:transparent;
@@ -81,41 +80,45 @@ html{
   color: white;
 }
 .attaquer {
-  /* float: right; */
   margin: -70px -37px 0 0;
   color: white;
 }
 .defendre {
-  /* float: right; */
   margin: 0px 0px 0 0;
   color: white;
 }
 h1 {
-     color : white;
-    text-align: center;
-    font-size: 25px;
-    /* margin-top: 0px; */
-    right: 50%;
-    text-transform: uppercase;
-    margin-bottom: 0px;   
-  }
+  color : white;
+  text-align: center;
+  font-size: 25px;
+  right: 50%;
+  text-transform: uppercase;
+  margin-bottom: 0px;   
+}
 body{
-      font-family: 'Orbitron', sans-serif;
-      color: white;
-      /* overflow: hidden; */
-      background-image:url(../img/fond4.jpg);
-  }
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+}
 p {
-    color: white;
-    margin:0px;
-  }
+  color: white;
+  margin:0px;
+}
+canvas{
+  z-index: -10;
+  position : absolute;
+  top : 0;
+  left : 0;
+  right : 0;
+  bottom : 0;
+  height : 100vh;
+  width : 100vw;
+}
 .contenu{
   background-color: transparent;
   display: flex;  
   flex: auto;
   color : white;
   max-height: 550px;  
-
 }
 .case {
   box-sizing: border-box;
@@ -126,23 +129,22 @@ p {
   background-repeat: no-repeat;
   background-size: contain;
   border-radius: 10px;
-
 }
 #joueur1{
-    text-align: right;
-    margin-top: 400px;
-    margin-left: 200px;
-    z-index: 20;
-    padding : 10px;
-    max-height: 90px;
+  text-align: right;
+  margin-top: 400px;
+  margin-left: 200px;
+  z-index: 20;
+  padding : 10px;
+  max-height: 90px;
 }
 #joueur2{
-    text-align: left;
-    margin-top: 400px;
-    margin-right: 200px;
-    z-index: 20;
-    padding : 10px;
-    max-height: 90px;
+  text-align: left;
+  margin-top: 400px;
+  margin-right: 200px;
+  z-index: 20;
+  padding : 10px;
+  max-height: 90px;
 }
 .alien {
   background-image: url('../img/alien.png');

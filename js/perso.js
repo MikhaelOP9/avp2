@@ -24,14 +24,12 @@ class Perso {
     }
     //__________________________________________________affichage des données des perso sur la page
     affichePerso() {
-
         if (this.nom == 'alien') {
             $("#nomPlayer1").html(`${this.nom}`);
             $("#santePlayer1").html(`${this.sante}`);
             $("#armePlayer1").html(`${this.arme.nom}`);
             $("#positionPlayer1").html(`${this.position}`);
         }
-
         if (this.nom == 'predator') {
             $("#nomPlayer2").html(`${this.nom}`);
             $("#santePlayer2").html(`${this.sante}`);
@@ -73,7 +71,6 @@ class Perso {
             }
         }
     }
-
     currentPlayer() {
         if (this.nom == "alien") {
             $("#joueur1").css({
@@ -85,8 +82,6 @@ class Perso {
             $("#joueur2").css({
                 'border': 'none'
             });
-
-
         } else if (this.nom == "predator") {
             $("#joueur2").css({
                 'border': 'solid',
@@ -129,7 +124,6 @@ class Perso {
             $("#joueur1").css({
                 'border': 'none'
             });
+        }
     }
-}
-
 }

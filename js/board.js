@@ -36,13 +36,11 @@ class Board {
   }
   createMap() {
     this.map = [];
-    
-//__________________________________________________Boucle des rangées.
+    //__________________________________________________Boucle des rangées.
     for (let y = 0; y < this.mapSize; y++) {
       // Créer chaque rangée.
       this.map[y] = [];
-      
-//__________________________________________________Boucle des cellules de chaques rangées.
+      //________________________________________________Boucle des cellules de chaques rangées.
       for (let x = 0; x < this.mapSize; x++) {
         let box = {
           wall : false,
@@ -110,11 +108,10 @@ class Board {
   //__________________________________________________affichage de la carte en jquery
   displayMap() {
     $("#container").empty();
-    $('#container').append(`
-        <table class="mainTable">
-          <tbody class="gameContainer">
-          </tbody>
-        </table>`
+    $('#container').append(`<table class="mainTable">
+      <tbody class="gameContainer">
+      </tbody>
+      </table>`
     );
     for (let y = 0; y < this.mapSize; y++) {
       $('table.mainTable>tbody.gameContainer').append(`
@@ -136,8 +133,8 @@ class Board {
         if (this.map[y][x].player == this.predator.nom)
           type = this.predator.nom;
         $('table.mainTable>tbody.gameContainer>tr.gameRow[data-location-y="' + y + '"]').append(`
-            <td data-location-x="${x}" data-location-y="${y}" class="case ${type}"></td> 
-          `);
+            <td data-location-x="${x}" data-location-y="${y}" class="case ${type}"></td>`
+          );
       }
     }
   }
@@ -172,10 +169,10 @@ class Board {
     } 
     this.map[oldY][oldX].player = null;
     this.map[newY][newX].player = player.nom;
- //__________________________________________________rafraichissement de l'affichage
+    //__________________________________________________rafraichissement de l'affichage
     this.displayMap();
   }
-   //__________________________________________________armes disponible sur la carte
+    //__________________________________________________armes disponible sur la carte
   availableWeapon(y, x) {
     let newWeapon = null;
     if (this.map[y][x].weapon == this.gun.nom) {
