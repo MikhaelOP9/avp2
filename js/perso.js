@@ -1,4 +1,3 @@
-
 //__________________________________________________Déclaration de la classe Perso
 class Perso {
     constructor(nom, sante, degat, arme, position, imgSrc, actif) {
