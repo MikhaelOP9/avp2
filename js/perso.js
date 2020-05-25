@@ -1,4 +1,4 @@
-//__________________________________________________Déclaration de la classe Perso
+//_______________________________Déclaration de la classe Perso
 class Perso {
     constructor(nom, sante, degat, arme, position, imgSrc, actif) {
         this.actif = actif;
@@ -12,7 +12,7 @@ class Perso {
         this.defending = false;
         this.initQuiCommence();
     }
-    //__________________________________________________description des personnages
+    //_______________________________description des personnages
     decrirePerso() {
         return `${this.nom} a ${this.sante} points de vie, son arme est 
         ${this.arme} il est localisé à la position ${this.position}
@@ -21,7 +21,7 @@ class Perso {
     rndNbInRange(min, max) {
         return Math.floor(Math.random() * (max - min) + min);
     }
-    //__________________________________________________affichage des données des perso sur la page
+    //_______________________________affichage des données des perso sur la page
     affichePerso() {
         if (this.nom == 'alien') {
             $("#nomPlayer1").html(`${this.nom}`);
@@ -44,7 +44,7 @@ class Perso {
             let boutonClose = document.getElementsByClassName("btn_close")[0];
             boutonClose.onclick = function () {
                 overlay3Elt.style.display = "none";
-                //_________________________________________________affichage encadré indiquant que alien est actif
+                //_______________________________affichage encadré indiquant que alien est actif
                 $("#joueur1").css({
                     'border': 'solid',
                     'borderRadius': '10px',
@@ -53,14 +53,14 @@ class Perso {
                 });
             }
         } else if (this.nom == "predator"){
-            //_________________________________________________pop-up indiquant que predator commence
+            //_______________________________pop-up indiquant que predator commence
             let overlay3Elt = document.getElementById("overlay3");
             overlay3Elt.style.display = "block";
             document.getElementById("joueur1Ou2").textContent = this.nom;
             let boutonClose = document.getElementsByClassName("btn_close")[0];
             boutonClose.onclick = function () {
                 overlay3Elt.style.display = "none";
-                //_________________________________________________affichage encadré indiquant que predator est actif
+                //_______________________________affichage encadré indiquant que predator est actif
                 $("#joueur2").css({
                     'border': 'solid',
                     'borderRadius': '10px',

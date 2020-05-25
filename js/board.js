@@ -3,7 +3,10 @@ class Board {
     this.map;
     this.mapSize = 10;
     this.wallCount = 20;
-    this.weaponCount = 4;
+    this.gunCount = 1;
+    this.lazerCount = 1;
+    this.chemicalCount = 1;
+    this.nuclearCount = 1;
     this.playerCount = 2;
     this.alienCount = 1;
     this.predatorCount = 1;
@@ -23,6 +26,7 @@ class Board {
     this.createPredator();
     this.displayMap();
   }
+  //_______________________________Génération aléatoire des cases
   getRandomAvailableCoords() {
     let x = this.rndNbInRange(0, this.mapSize);
     let y = this.rndNbInRange(0, this.mapSize);
@@ -34,13 +38,14 @@ class Board {
     }; 
     return { x, y }
   }
+  //_______________________________Génération de la carte
   createMap() {
     this.map = [];
-    //__________________________________________________Boucle des rangées.
+    //_______________________________Boucle des rangées.
     for (let y = 0; y < this.mapSize; y++) {
       // Créer chaque rangée.
       this.map[y] = [];
-      //________________________________________________Boucle des cellules de chaques rangées.
+      //_______________________________Boucle des cellules de chaques rangées.
       for (let x = 0; x < this.mapSize; x++) {
         let box = {
           wall : false,
@@ -52,60 +57,60 @@ class Board {
       }
     } 
   }
-  //__________________________________________________génération d'un nombre aleatoire pour la génération de la carte
+  //_______________________________génération d'un nombre aleatoire pour le remplaissage de la carte
   rndNbInRange(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
   }
-  //__________________________________________________disposition sur la carte des murs
+  //_______________________________disposition sur la carte des murs
   createWalls() {
     for (let i = 0; i !== this.wallCount; i++) {
       let { x, y } = this.getRandomAvailableCoords();
       this.map[y][x].wall = true;
     }
   }
-  //__________________________________________________disposition sur la carte des guns
+  //_______________________________disposition sur la carte du gun
   createGun() {
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < this.gunCount; i++) {
       let { x, y } = this.getRandomAvailableCoords();
       this.map[y][x].weapon = this.gun.nom;
     }
   }
-  //__________________________________________________disposition sur la carte des lazers
+  //_______________________________disposition sur la carte du lazer
   createLazer() {
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < this.lazerCount; i++) {
       let { x, y } = this.getRandomAvailableCoords();
       this.map[y][x].weapon = this.lazer.nom;
     }
   }
-//__________________________________________________disposition sur la carte des armes chimique
+  //_______________________________disposition sur la carte de l'arme chimique
   createChemical() {
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < this.chemicalCount; i++) {
       let { x, y } = this.getRandomAvailableCoords();
       this.map[y][x].weapon = this.chemical.nom;
     }
   }
-  //__________________________________________________disposition sur la carte de l'arme nucléaire
+  //_______________________________disposition sur la carte de l'arme nucléaire
   createNuclear() {
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < this.nuclearCount; i++) {
       let { x, y } = this.getRandomAvailableCoords();
       this.map[y][x].weapon = this.nuclear.nom;
     }
   }
-  //__________________________________________________disposition sur la carte du perso predator
+  //_______________________________disposition sur la carte du perso predator
   createPredator() {
     for (let i = 0; i < this.predatorCount; i++) {
       let { x, y } = this.getRandomAvailableCoords();
       this.map[y][x].player = this.predator.nom;
     }
   }
-  //__________________________________________________disposition sur la carte du perso alien
+  //_______________________________disposition sur la carte du perso alien
   createAlien() {
     for (let i = 0; i < this.alienCount; i++) {
       let { x, y } = this.getRandomAvailableCoords();
       this.map[y][x].player = this.alien.nom;
     }
   }
-  //__________________________________________________affichage de la carte en jquery
+  //_______________________________affichage de la carte en jquery
   displayMap() {
     $("#container").empty();
     $('#container').append(`<table class="mainTable">
@@ -138,6 +143,7 @@ class Board {
       }
     }
   }
+  //_______________________________Positionnement des joueurs
   locatePlayer(player) {
     for (let y = 0; y < this.mapSize; y++) {
       for (let x = 0; x < this.mapSize; x++) {
@@ -147,7 +153,7 @@ class Board {
       }
     }
   }
- //__________________________________________________position de déplacement disponible 
+  //_______________________________position de déplacement disponible 
   availablePosition(y, x) {
     if (
       y >= 0 &&
@@ -162,6 +168,7 @@ class Board {
     }
     return false;
   }
+  //_______________________________Mouvement des joueurs
   movePlayer(player, newY, newX, oldY, oldX) {
     if (player.armeLache != null){
       this.map[newY][newX].weapon = player.armeLache.nom;
@@ -169,10 +176,10 @@ class Board {
     } 
     this.map[oldY][oldX].player = null;
     this.map[newY][newX].player = player.nom;
-    //__________________________________________________rafraichissement de l'affichage
+    //_______________________________rafraichissement de l'affichage
     this.displayMap();
   }
-    //__________________________________________________armes disponible sur la carte
+    //_______________________________armes disponible sur la carte
   availableWeapon(y, x) {
     let newWeapon = null;
     if (this.map[y][x].weapon == this.gun.nom) {
@@ -186,7 +193,7 @@ class Board {
     } 
     return newWeapon;
   }
-   //__________________________________________________détection de la proximité des joueurs sur des cases adjacentes
+   //_______________________________détection de la proximité des joueurs sur des cases adjacentes
   nextToPlayer(y, x){
     if (y-1 != -1)
       if (this.map[y-1][x].player == this.alien.nom || this.map[y-1][x].player == this.predator.nom) return true;

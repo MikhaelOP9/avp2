@@ -1,4 +1,4 @@
- //__________________________________________________déclaration de la classe Armes
+//_______________________________déclaration de la classe Armes
 
 class Armes {
     constructor(nom, degatArme, positionArme, imgSrc, actif) {
@@ -8,7 +8,7 @@ class Armes {
         this.imgSrc = imgSrc;
         this.actif = actif;
     }
-     //__________________________________________________Déscripion des armes
+     //_______________________________Déscripion des armes
     decrireArmes() {
         return `Cette arme se nomme ${this.nom} elle enléve ${this.degatArme} 
         points de vie, elle est localisée à la case N°${this.positionArme}  
