@@ -16,6 +16,7 @@ class Board {
     this.chemical = chemical;
     this.alien = alien;
     this.predator = predator;
+    this.checkMapSize();
     this.createMap();
     this.createWalls();
     this.createLazer();
@@ -25,6 +26,15 @@ class Board {
     this.createAlien();
     this.createPredator();
     this.displayMap();
+  }
+  checkMapSize(){
+    let mapCase = this.mapSize * this.mapSize;
+    let emptyCase = mapCase - (this.wallCount + this.gunCount + this.lazerCount +
+      this.chemicalCount + this.nuclearCount + this.playerCount) 
+    console.log (mapCase, emptyCase);
+    if (emptyCase < 10){
+      throw new Error("merci de s'assurer que la map est assez grande pour contenir tous les objets générés")
+    }
   }
   //_______________________________Génération aléatoire des cases
   getRandomAvailableCoords() {
